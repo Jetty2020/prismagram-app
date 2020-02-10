@@ -8,9 +8,9 @@ import { createAppContainer } from "react-navigation";
 
  const AuthNavigation = createStackNavigator(
    {
+     Login,
      Signup,
      Confirm,
-     Login,
      AuthHome
    },
    {
