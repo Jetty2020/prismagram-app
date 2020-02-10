@@ -9,12 +9,12 @@ import { createAppContainer } from "react-navigation";
  const AuthNavigation = createStackNavigator(
    {
      Login,
+     AuthHome,
      Signup,
-     Confirm,
-     AuthHome
+     Confirm
    },
    {
-     initialRouteName: "AuthHome",
+     
      headerMode: "none"
    }
  );
