@@ -8,7 +8,7 @@ import React from "react";
  `;
 
  const TextInput = styled.TextInput`
-   width: ${constants.width / 2}px;
+   width: ${constants.width / 1.7}px;
    padding: 10px;
    background-color: ${props => props.theme.greyColor};
    border: 0.5px solid ${props => props.theme.darkGreyColor};
