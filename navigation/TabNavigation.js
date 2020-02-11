@@ -9,6 +9,7 @@
  import MessagesLink from "../components/MessagesLink";
  import { View } from "react-native";
  import NavIcon from "../components/NavIcon";
+ import { stackStyles } from "./config";
 
  const stackFactory = (initialRoute, customConfig) =>
    createStackNavigator({
@@ -16,7 +17,7 @@
       screen: initialRoute,
       navigationOptions: {
         ...customConfig,
-        headerStyle: { backgroundColor: "#EFEEEF" }
+        headerStyle: { ...stackStyles }
       }
      }
    });
@@ -102,8 +103,8 @@
  {
   tabBarOptions: {
     showLabel: false,
-       tabStyle: {
-         backgroundColor: "#EFEEEF"
+    style: {
+      backgroundColor: "#FAFAFA"
        }
   }
 }
