@@ -20,6 +20,7 @@ import NavController from "./components/NavController";
   const [client, setClient] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const preLoad = async () => {
+    await AsyncStorage.clear();
     try {
       await Font.loadAsync({
         ...Ionicons.font
@@ -32,6 +33,12 @@ import NavController from "./components/NavController";
        });
        const client = new ApolloClient({
          cache,
+         request: async operation => {
+          const token = await AsyncStorage.getItem("jwt");
+          return operation.setContext({
+            headers: { Authorization: `Bearer ${token}` }
+          });
+        },
          ...apolloClientOptions
        });
        const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");
