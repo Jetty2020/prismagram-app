@@ -1,4 +1,5 @@
  import React from "react";
+ import { Platform } from "react-native";
  import { createStackNavigator } from "react-navigation-stack";
  import { createBottomTabNavigator } from "react-navigation-tabs";
  import Home from "../screens/Tabs/Home";
@@ -7,25 +8,73 @@
  import Profile from "../screens/Tabs/Profile";
  import MessagesLink from "../components/MessagesLink";
  import { View } from "react-native";
+ import NavIcon from "../components/NavIcon";
 
- export default createBottomTabNavigator({
-  Home: {
-    screen: createStackNavigator({
-      Home: {
-        screen: Home,
-        navigationOptions: {
-          headerRight: () => <MessagesLink />
-        }
+ const stackFactory = (initialRoute, customConfig) =>
+   createStackNavigator({
+    InitialRoute: {
+      screen: initialRoute,
+      navigationOptions: { ...customConfig }
+     }
+   });
+
+ export default createBottomTabNavigator(
+  {
+    Home: {
+      screen: stackFactory(Home, {
+        headerTitle: () => <MessagesLink />,
+        headerRight: () => <NavIcon name="logo-instagram" size={36} />
+      }),
+      navigationOptions: {
+        tabBarIcon: (
+          <NavIcon name={Platform.OS === "ios" ? "ios-home" : "md-home"} />
+        )
       }
-    })
-  },
-  Search: createStackNavigator({ Search }),
-  Add: {
-   screen: View,
-   navigationOptions: {
-     tabBarOnPress: ({ navigation }) => navigation.navigate("PhotoNavigation")
+    },
+    Search: {
+      screen: stackFactory(Search, {
+        title: "Search"
+      }),
+      navigationOptions: {
+        tabBarIcon: (
+          <NavIcon name={Platform.OS === "ios" ? "ios-search" : "md-search"} />
+        )
+      }
+    },
+    Add: {
+      screen: View,
+      navigationOptions: {
+        tabBarOnPress: ({ navigation }) =>
+          navigation.navigate("PhotoNavigation"),
+        tabBarIcon: (
+          <NavIcon name={Platform.OS === "ios" ? "ios-add" : "md-add"} />
+        )
+      }
+    },
+    Notifications: {
+      screen: stackFactory(Notifications, {
+        title: "Notifications"
+      }),
+      navigationOptions: {
+        tabBarIcon: (
+          <NavIcon name={Platform.OS === "ios" ? "ios-heart" : "md-heart"} />
+        )
+      }
+    },
+    Profile: {
+      screen: stackFactory(Profile, {
+        title: "Profile"
+      }),
+      navigationOptions: {
+        tabBarIcon: (
+          <NavIcon name={Platform.OS === "ios" ? "ios-person" : "md-person"} />
+        )
+      }
    }
  },
- Notifications: createStackNavigator({ Notifications }),
- Profile: createStackNavigator({ Profile })
-});
+ {
+  tabBarOptions: {
+    showLabel: false
+  }
+}
+);

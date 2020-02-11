@@ -8,8 +8,8 @@ import { createAppContainer } from "react-navigation";
 
  const AuthNavigation = createStackNavigator(
    {
-     Signup,
      Login,
+     Signup,
      Confirm,
      AuthHome
    },
