@@ -11,18 +11,31 @@
  import { View } from "react-native";
  import NavIcon from "../components/NavIcon";
  import { stackStyles } from "./config";
+ import styles from "../styles";
 
  const stackFactory = (initialRoute, customConfig) =>
-   createStackNavigator({
+ createStackNavigator(
+  {
     InitialRoute: {
       screen: initialRoute,
       navigationOptions: {
-        ...customConfig,
-        headerStyle: { ...stackStyles }
+        ...customConfig
+      }
+    },
+    Detail: {
+      screen: Detail,
+      navigationOptions: {
+        headerTintColor: styles.blackColor,
+        title: "Photo"
+      }
       }
      },
-     Detail
-   });
+     {
+      defaultNavigationOptions: {
+        headerStyle: { ...stackStyles }
+      }
+    }
+  );
 
  export default createBottomTabNavigator(
   {
@@ -41,7 +54,9 @@
       }
     },
     Search: {
-      screen: stackFactory(Search),
+      screen: stackFactory(Search, {
+        headerBackTitle: null
+      }),
       navigationOptions: {
         tabBarIcon: ({ focused }) => (
           <NavIcon
