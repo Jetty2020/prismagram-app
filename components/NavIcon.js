@@ -7,7 +7,7 @@ import React from "react";
   focused = true,
   name,
   color = styles.blackColor,
-  size = 22
+  size = 30
 }) => (
   <Ionicons
     name={name}
