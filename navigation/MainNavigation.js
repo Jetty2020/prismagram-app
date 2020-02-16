@@ -8,8 +8,8 @@ import { createAppContainer } from "react-navigation";
 
  const MainNavigation = createStackNavigator(
    {
-     TabNavigation,
      PhotoNavigation,
+     TabNavigation,
      MessageNavigation
    },
    {
