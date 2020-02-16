@@ -133,7 +133,7 @@ import { Image, View, TouchableOpacity } from "react-native";
    fullName: PropTypes.string.isRequired,
    isFollowing: PropTypes.bool.isRequired,
    isSelf: PropTypes.bool.isRequired,
-   bio: PropTypes.string.isRequired,
+   bio: PropTypes.string,
    followingCount: PropTypes.number.isRequired,
    followersCount: PropTypes.number.isRequired,
    postsCount: PropTypes.number.isRequired,
