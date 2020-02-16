@@ -9,8 +9,8 @@ import React from "react";
 
  const Text = styled.Text``;
 
- export default () => (
+ export default ({ navigation }) => (
    <View>
-     <Text>Upload</Text>
+     <Text>I should upload {navigation.getParam("photo").uri}</Text>
    </View>
  );
