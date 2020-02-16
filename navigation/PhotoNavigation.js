@@ -46,7 +46,7 @@ import styles from "../styles";
       Tabs: {
         screen: PhotoTabs,
         navigationOptions: {
-          headerShown: false
+          title: "Choose Photo"
         }
       },
       UploadPhoto
